@@ -18,8 +18,8 @@
                 $this->loadLayout();
                 $this->_setActiveMenu('suppliers/items');
                 $this->getLayout()->getBlock('head')->setCanLoadExtJs(true);
-                //$this->_addContent($this->getLayout()->createBlock('suppliers/manage_edit'));
-                //->_addLeft($this->getLayout()->createBlock('suppliers/adminhtml_suppliers_edit_tabs'));
+                $this->_addContent($this->getLayout()->createBlock('suppliers/manage_edit'))
+                    ->_addLeft($this->getLayout()->createBlock('suppliers/manage_edit_tabs'));
                 $this->renderLayout();
             } else {
                 Mage::getSingleton('adminhtml/session')->addError(Mage::helper('suppliers')->__('Item does not exist'));
