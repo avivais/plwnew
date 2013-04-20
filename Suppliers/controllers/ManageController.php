@@ -77,7 +77,7 @@
                     $model = Mage::getModel('suppliers/suppliers');
                     $model->setId($this->getRequest()->getParam('id'))
                         ->delete();
-                    Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('adminhtml')->__('Item was successfully deleted'));
+                    Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('suppliers')->__('Item was successfully deleted'));
                     $this->_redirect('*/*/');
                 } catch (Exception $e) {
                     Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
@@ -86,5 +86,24 @@
             }
             $this->_redirect('*/*/');
         }
+        
+        public function massDeleteAction() {
+            $suppliersIds = $this->getRequest()->getParam('suppliers');
+            if(!is_array($suppliersIds)) {
+                Mage::getSingleton('adminhtml/session')->addError(Mage::helper('suppliers')->__('Please select item(s)'));
+            } else {
+                try {
+                    foreach ($suppliersIds as $suppliersId) {
+                        $suppliers = Mage::getModel('suppliers/suppliers')->load($suppliersId);
+                        $suppliers->delete();
+                    }
+                    Mage::getSingleton('adminhtml/session')->addSuccess(
+                        Mage::helper('suppliers')->__('Total of %d record(s) were successfully deleted', count($suppliersIds))
+                    );
+                } catch (Exception $e) {
+                    Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+                }
+            }
+            $this->_redirect('*/*/index');
+        }
     }
-

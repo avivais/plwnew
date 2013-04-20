@@ -53,10 +53,22 @@
 
 			return parent::_prepareColumns();
 		}
+        
+        protected function _prepareMassaction() {
+            $this->setMassactionIdField('id');
+            $this->getMassactionBlock()->setFormFieldName('suppliers');
+
+            $this->getMassactionBlock()->addItem('delete', array(
+                'label' => Mage::helper('suppliers')->__('Delete'),
+                'url' => $this->getUrl('*/*/massDelete'),
+                'confirm' => Mage::helper('suppliers')->__('Are you sure?')
+            ));
+
+            return $this;
+        }
 
 		public function getRowUrl($row)
 		{
 			return $this->getUrl('*/*/edit', array('id' => $row->getId()));
 		}
 	}
-
