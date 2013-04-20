@@ -1,0 +1,15 @@
+<config>
+	<menu>
+		<suppliers translate="title" module="suppliers">
+			<title>Suppliers</title>
+			<sort_order>71</sort_order>
+			<children>
+				<plw_suppliers_manage translate="title" module="suppliers">
+					<title>Manage</title>
+					<sort_order>1</sort_order>
+					<action>suppliers/manage</action>
+				</plw_suppliers_manage>
+			</children>
+		</suppliers>
+	</menu>
+</config>
