@@ -16,6 +16,12 @@
 		</routers>
 	</admin>
 	<global>
+		<rewrite>
+			<myurl>
+				<from><![CDATA[#^/projector-manual\/.*#]]></from>
+				<to>projector-manual.php</to>
+			</myurl>
+		</rewrite>
 		<models>
 			<suppliers>
 				<class>Plw_Suppliers_Model</class>
