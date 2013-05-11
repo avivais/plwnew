@@ -9,6 +9,11 @@
 					<sort_order>1</sort_order>
 					<action>suppliers/manage</action>
 				</plw_suppliers_manage>
+				<plw_suppliers_select translate="title" module="suppliers">
+					<title>Select (Orders)</title>
+					<sort_order>2</sort_order>
+					<action>suppliers/select</action>
+				</plw_suppliers_select>
 			</children>
 		</suppliers>
 	</menu>
